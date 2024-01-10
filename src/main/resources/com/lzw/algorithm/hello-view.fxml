@@ -8,12 +8,15 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.21590909090909086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.lzw.algorithm.HelloController">
+<SplitPane fx:id="splitPane" dividerPositions="0.21590909090909086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lzw.algorithm.HelloController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -81,9 +84,38 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="TextFile">
+                <Tab fx:id="fileTab" text="TextFile">
                   <content>
-                    <AnchorPane />
+                    <AnchorPane>
+                           <children>
+                              <VBox layoutX="133.0" layoutY="70.0" prefHeight="369.6" prefWidth="466.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="91.0" prefWidth="466.0">
+                                       <children>
+                                          <Button fx:id="selectFileBtn" layoutX="5.0" layoutY="11.0" mnemonicParsing="false" onAction="#selectBtnFileAction" prefHeight="38.0" prefWidth="106.0" text="select File" />
+                                          <Label fx:id="fileSelectedLabel" layoutX="14.0" layoutY="58.0" prefHeight="18.0" prefWidth="446.0" text="File path : " />
+                                          <Button fx:id="saveBtnFile" layoutX="126.0" layoutY="11.0" mnemonicParsing="false" onAction="#saveBtnFileAction" prefHeight="38.0" prefWidth="114.0" text="save File" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label prefHeight="18.0" prefWidth="105.0" text="output : ">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                    </Label>
+                                    <TextArea prefHeight="262.0" prefWidth="466.0" />
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Image">
