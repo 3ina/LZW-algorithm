@@ -27,7 +27,7 @@ public class HelloController {
     @FXML
     private AnchorPane mainAnchorPane;
     @FXML
-    private TextArea inputTextArea,outputTextArea;
+    private TextArea inputTextArea,outputTextArea,textFileTaboutput;
 
     private String filePath = null;
 
@@ -40,13 +40,23 @@ public class HelloController {
             String resultText = "";
             for (Integer num: encodedText
                  ) {
-                resultText += num.toString() + " ";
+                resultText += num.toString() + "\n";
 
             }
             outputTextArea.setText(resultText);
         }else if(mainTab.getSelectionModel().getSelectedItem().getId() == fileTab.getId()){
             if(filePath != null){
+                String s = FileToStringConverter.convertFileToString(filePath);
+                List<Integer> encodedText = LZWCompression.encode(s);
+                String resultText = "";
+                for (Integer num: encodedText
+                ) {
+                    if(num != null) {
+                        resultText += num.toString() + "\n";
+                    }
 
+                }
+                textFileTaboutput.setText(resultText);
             }else {
                 Dialog<String> dialog = new Dialog<String>();
                 dialog.setTitle("Dialog");
@@ -67,7 +77,7 @@ public class HelloController {
     protected void decompressButtonAction(ActionEvent event) {
 
         if (mainTab.getSelectionModel().getSelectedItem().getId() == textInputTab.getId()) {
-            String encodedListString[] = inputTextArea.getText().split(" ");
+            String encodedListString[] = inputTextArea.getText().split("\n");
             List<Integer>  encodedList = new ArrayList<>();
 
             for (String num: encodedListString

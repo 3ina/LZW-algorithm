@@ -112,7 +112,7 @@
                                           </Lighting>
                                        </effect>
                                     </Label>
-                                    <TextArea prefHeight="262.0" prefWidth="466.0" />
+                                    <TextArea fx:id="textFileTaboutput" prefHeight="262.0" prefWidth="466.0" />
                                  </children>
                               </VBox>
                            </children></AnchorPane>
