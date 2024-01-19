@@ -1,6 +1,6 @@
-# LZMA ALGORITHM
+# LZW ALGORITHM
 
-Implementation of LZMA algorithm for university algorithm design course with Java and Java FX
+Implementation of LZW algorithm for university algorithm design course with Java and Java FX
 
 ## Author
 
