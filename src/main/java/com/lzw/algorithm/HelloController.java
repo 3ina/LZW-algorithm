@@ -10,12 +10,15 @@ import com.lzw.algorithm.LZWCompression;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HelloController {
     @FXML
-    private Button compress_btn,decompress_btn,selectFileBtn,saveBtnFile;
+    private Button compress_btn,decompress_btn,selectFileBtn;
     @FXML
     private SplitPane splitPane;
     @FXML
@@ -30,6 +33,7 @@ public class HelloController {
     private TextArea inputTextArea,outputTextArea,textFileTaboutput;
 
     private String filePath = null;
+
 
     @FXML
     protected void compressButtonAction(ActionEvent event) {
@@ -89,7 +93,16 @@ public class HelloController {
             outputTextArea.setText(decodedString);
         }else if(mainTab.getSelectionModel().getSelectedItem().getId() == fileTab.getId()) {
             if (filePath != null) {
+                String encodedListString[] = textFileTaboutput.getText().split("\n");
+                List<Integer>  encodedList = new ArrayList<>();
 
+                for (String num: encodedListString
+                ) {
+                    encodedList.add(Integer.parseInt(num));
+                }
+
+                String decodedString = LZWCompression.decode(encodedList);
+                textFileTaboutput.setText(decodedString);
             } else {
                 Dialog<String> dialog = new Dialog<String>();
                 dialog.setTitle("Dialog");
@@ -115,10 +128,7 @@ public class HelloController {
 
     }
 
-    @FXML
-    protected void saveBtnFileAction(ActionEvent event){
 
-    }
 
 
 }

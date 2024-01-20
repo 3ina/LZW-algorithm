@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="splitPane" dividerPositions="0.21590909090909086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lzw.algorithm.HelloController">
+<SplitPane fx:id="splitPane" dividerPositions="0.21590909090909086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lzw.algorithm.HelloController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -84,7 +84,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="fileTab" text="TextFile">
+                <Tab fx:id="fileTab" text="File">
                   <content>
                     <AnchorPane>
                            <children>
@@ -94,7 +94,6 @@
                                        <children>
                                           <Button fx:id="selectFileBtn" layoutX="5.0" layoutY="11.0" mnemonicParsing="false" onAction="#selectBtnFileAction" prefHeight="38.0" prefWidth="106.0" text="select File" />
                                           <Label fx:id="fileSelectedLabel" layoutX="14.0" layoutY="58.0" prefHeight="18.0" prefWidth="446.0" text="File path : " />
-                                          <Button fx:id="saveBtnFile" layoutX="126.0" layoutY="11.0" mnemonicParsing="false" onAction="#saveBtnFileAction" prefHeight="38.0" prefWidth="114.0" text="save File" />
                                        </children>
                                     </AnchorPane>
                                     <Label prefHeight="18.0" prefWidth="105.0" text="output : ">
@@ -118,11 +117,6 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Image">
-                     <content>
-                        <AnchorPane />
-                     </content>
-                  </Tab>
               </tabs>
             </TabPane>
          </children></AnchorPane>
