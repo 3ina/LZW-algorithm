@@ -3,9 +3,9 @@ import java.util.*;
 
 public class LZWCompression {
     public static List<Integer> encode(String text) {
-        int dictSize = 256;
+        int dictsize = 256;
         Map<String, Integer> dictionary = new HashMap<>();
-        for (int i = 0; i < dictSize; i++) {
+        for (int i = 0; i < dictsize; i++) {
             dictionary.put(String.valueOf((char) i), i);
         }
 
@@ -17,7 +17,7 @@ public class LZWCompression {
                 foundChars = charsToAdd;
             } else {
                 result.add(dictionary.get(foundChars));
-                dictionary.put(charsToAdd, dictSize++);
+                dictionary.put(charsToAdd, dictsize++);
                 foundChars = String.valueOf(character);
             }
         }
