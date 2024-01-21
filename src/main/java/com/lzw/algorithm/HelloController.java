@@ -36,7 +36,7 @@ public class HelloController {
 
 
     @FXML
-    protected void compressButtonAction(ActionEvent event) {
+    protected void compressButtonAction(ActionEvent event)   {
 
         if (mainTab.getSelectionModel().getSelectedItem().getId() == textInputTab.getId()) {
             String textInput = inputTextArea.getText();
@@ -50,8 +50,10 @@ public class HelloController {
             outputTextArea.setText(resultText);
         }else if(mainTab.getSelectionModel().getSelectedItem().getId() == fileTab.getId()){
             if(filePath != null){
+
                 String s = FileToStringConverter.convertFileToString(filePath);
                 List<Integer> encodedText = LZWCompression.encode(s);
+
                 String resultText = "";
                 for (Integer num: encodedText
                 ) {
@@ -61,6 +63,13 @@ public class HelloController {
 
                 }
                 textFileTaboutput.setText(resultText);
+                try {
+                    String ratio = LZWCompression.fileCompress(filePath);
+                    fileSelectedLabel.setText(ratio);
+
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else {
                 Dialog<String> dialog = new Dialog<String>();
                 dialog.setTitle("Dialog");
@@ -92,6 +101,7 @@ public class HelloController {
             String decodedString = LZWCompression.decode(encodedList);
             outputTextArea.setText(decodedString);
         }else if(mainTab.getSelectionModel().getSelectedItem().getId() == fileTab.getId()) {
+
             if (filePath != null) {
                 String encodedListString[] = textFileTaboutput.getText().split("\n");
                 List<Integer>  encodedList = new ArrayList<>();

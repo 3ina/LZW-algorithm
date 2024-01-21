@@ -1,4 +1,5 @@
 package com.lzw.algorithm;
+import java.io.*;
 import java.util.*;
 
 public class LZWCompression {
@@ -37,16 +38,69 @@ public class LZWCompression {
         String characters = String.valueOf((char) encodedText.remove(0).intValue());
         StringBuilder result = new StringBuilder(characters);
         for (int code : encodedText) {
-            String entry = dictionary.containsKey(code)
-                    ? dictionary.get(code)
-                    : characters + characters.charAt(0);
+            String entry;
+            if(dictionary.containsKey(code)){
+                entry = dictionary.get(code);
+            }else{
+                entry = characters + characters.charAt(0);
+            }
             result.append(entry);
             dictionary.put(dictSize++, characters + entry.charAt(0));
             characters = entry;
         }
         return result.toString();
     }
+
+    public static String fileCompress(String inputFilePath) throws IOException {
+
+            FileInputStream inputFile = new FileInputStream(inputFilePath);
+            FileOutputStream outputFile = new FileOutputStream("compression.lzw");
+
+            HashMap<String, Integer> dictionary = new HashMap<>();
+            for (int i = 0; i < 256; i++) {
+                dictionary.put("" + (char) i, i);
+            }
+
+            String currentString = "";
+            int code = 256;
+
+            int inputByte;
+            while ((inputByte = inputFile.read()) != -1) {
+                char inputChar = (char) inputByte;
+                String newString = currentString + inputChar;
+                if (dictionary.containsKey(newString)) {
+                    currentString = newString;
+                } else {
+                    outputFile.write(dictionary.get(currentString));
+                    dictionary.put(newString, code);
+                    code++;
+                    currentString = "" + inputChar;
+                }
+            }
+
+            if (!currentString.equals("")) {
+                outputFile.write(dictionary.get(currentString));
+            }
+
+            inputFile.close();
+            outputFile.close();
+
+            File originalFile = new File(inputFilePath);
+            File compressedFile = new File("compression.lzw");
+
+            double originalFileSize = originalFile.length();
+            double compressedFileSize = compressedFile.length();
+
+            double compressionRatio = (1 - (compressedFileSize / originalFileSize)) * 100;
+
+            return  "Compression ratio: " + compressionRatio + "%";
+
+
+
+    }
 }
+
+
 
 
 

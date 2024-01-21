@@ -21,9 +21,5 @@ public class FileToStringConverter {
         return content.toString();
     }
 
-    public static void main(String[] args) {
-        String filePath = "path/to/your/file.txt";
-        String fileContent = convertFileToString(filePath);
-        System.out.println(fileContent);
-    }
+
 }
