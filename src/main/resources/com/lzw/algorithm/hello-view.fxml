@@ -22,7 +22,7 @@
          <children>
             <VBox prefHeight="398.4" prefWidth="126.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="128.0" text="LZMA ALGORITHM">
+                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="128.0" text="LZW ALGORITHM">
                      <effect>
                         <Blend />
                      </effect>
@@ -93,7 +93,7 @@
                                     <AnchorPane prefHeight="91.0" prefWidth="466.0">
                                        <children>
                                           <Button fx:id="selectFileBtn" layoutX="5.0" layoutY="11.0" mnemonicParsing="false" onAction="#selectBtnFileAction" prefHeight="38.0" prefWidth="106.0" text="select File" />
-                                          <Label fx:id="fileSelectedLabel" layoutX="14.0" layoutY="58.0" prefHeight="18.0" prefWidth="446.0" text="File path : " />
+                                          <Label fx:id="fileSelectedLabel" layoutX="122.0" layoutY="11.0" prefHeight="66.0" prefWidth="343.0" text="File path : " />
                                        </children>
                                     </AnchorPane>
                                     <Label prefHeight="18.0" prefWidth="105.0" text="output : ">
