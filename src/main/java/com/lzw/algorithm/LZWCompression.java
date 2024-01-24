@@ -93,7 +93,7 @@ public class LZWCompression {
 
             double compressionRatio = (1 - (compressedFileSize / originalFileSize)) * 100;
 
-            return  "Compression ratio: " + compressionRatio + "%" + "\n original size : " + originalFileSize + " bytes" + "\n original size : " + compressedFileSize + " bytes";
+            return  "Compression ratio: " + compressionRatio + "%" + "\n original size : " + originalFileSize + " bytes" + "\n compression size : " + compressedFileSize + " bytes";
 
 
 
